@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -13,41 +14,50 @@ const Header = () => {
           <nav aria-label="Global" className="hidden md:block">
             <ul className="flex items-center gap-6 text-sm tracking-wider text-gray-900 uppercase font-medium">
               <li>
-                <a className="transition hover:text-gray-900/75" href="#">
+                <Link className="transition hover:text-gray-900/75" href="/">
                   Home
-                </a>
+                </Link>
               </li>
 
               <li>
-                <a className="transition hover:text-gray-900/75" href="#">
+                <Link
+                  href="/upload"
+                  className="transition hover:text-gray-900/75"
+                >
                   Upload
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="transition hover:text-gray-900/75" href="#">
+                <Link
+                  href="/about-us"
+                  className="transition hover:text-gray-900/75"
+                >
                   About us
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="transition hover:text-gray-900/75" href="#">
+                <Link
+                  href="/contact-us"
+                  className="transition hover:text-gray-900/75"
+                >
                   Contact us
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
 
           <div className="flex items-center gap-4">
             <div className="flex gap-4">
-              <a
+              <Link
                 className="block border-1 rounded-sm sm:px-[40px] px-[20px] sm:py-2.5 py-1.5 text-sm font-medium text-white transition tracking-wider bg-[#ff7a00] hover:bg-white hover:text-[#ff7a00] hover:border-1 hover:scale-[1.1]"
-                href="#"
+                href="/signIn"
               >
                 Login
-              </a>
+              </Link>
 
               <a
                 className="block border-1 rounded-sm sm:px-[40px] px-[20px] sm:py-2.5 py-1.5 text-sm font-medium text-gray-900 transition tracking-wider bg-white hover:bg-gray-900 hover:text-white hover:border-1 hover:scale-[1.1]"
-                href="#"
+                href="/signUp"
               >
                 Register
               </a>
