@@ -3,7 +3,7 @@ import Sidebar from "@/app/_components/Sidebar";
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="">
-      <Sidebar />
+      {/* <Sidebar /> */}
       {children}
     </div>
   );

@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
-import { roboto } from "./_utlis/fonts";
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 
 import "./globals.css";
+import { roboto } from "./_utlis/fonts";
 
 export const metadata: Metadata = {
   title: "Just Share It",
@@ -17,8 +25,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${roboto.className} antialiased `}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${roboto.className} antialiased `}>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }
