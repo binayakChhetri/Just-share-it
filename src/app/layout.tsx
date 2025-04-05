@@ -1,12 +1,5 @@
 import type { Metadata } from "next";
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 
 import "./globals.css";
 import { roboto } from "./_utlis/fonts";
