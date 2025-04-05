@@ -18,3 +18,7 @@
     --foreground: #ededed; */
   }
 }
+
+body {
+  background-color: white;
+}

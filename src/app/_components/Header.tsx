@@ -11,25 +11,25 @@ const Header = () => {
 
         <div className="flex flex-1 items-center justify-end md:justify-between">
           <nav aria-label="Global" className="hidden md:block">
-            <ul className="flex items-center gap-6 text-sm tracking-wider">
+            <ul className="flex items-center gap-6 text-sm tracking-wider text-gray-900 uppercase font-medium">
               <li>
-                <a className="transition hover:text-gray-500/75" href="#">
+                <a className="transition hover:text-gray-900/75" href="#">
                   Home
                 </a>
               </li>
 
               <li>
-                <a className="transition hover:text-gray-500/75" href="#">
+                <a className="transition hover:text-gray-900/75" href="#">
                   Upload
                 </a>
               </li>
               <li>
-                <a className="transition hover:text-gray-500/75" href="#">
+                <a className="transition hover:text-gray-900/75" href="#">
                   About us
                 </a>
               </li>
               <li>
-                <a className="transition hover:text-gray-500/75" href="#">
+                <a className="transition hover:text-gray-900/75" href="#">
                   Contact us
                 </a>
               </li>
@@ -46,7 +46,7 @@ const Header = () => {
               </a>
 
               <a
-                className="block border-1 rounded-sm sm:px-[40px] px-[20px] sm:py-2.5 py-1.5 text-sm font-medium text-[#222020] transition tracking-wider bg-white hover:bg-[#222020] hover:text-white hover:border-1 hover:scale-[1.1]"
+                className="block border-1 rounded-sm sm:px-[40px] px-[20px] sm:py-2.5 py-1.5 text-sm font-medium text-gray-900 transition tracking-wider bg-white hover:bg-gray-900 hover:text-white hover:border-1 hover:scale-[1.1]"
                 href="#"
               >
                 Register
