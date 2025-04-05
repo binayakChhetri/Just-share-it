@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { roboto } from "./_ui/fonts";
+import { roboto } from "./_utlis/fonts";
 
 import "./globals.css";
 
