@@ -1,23 +1,6 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
-
 const page = () => {
   return (
-    <div>
-      File page
-      <SignedOut>
-        <SignInButton />
-        <SignUpButton />
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-    </div>
+    <div className="max-w-screen-xl w-full px-4 sm:px-6 lg:px-8">File page</div>
   );
 };
 export default page;

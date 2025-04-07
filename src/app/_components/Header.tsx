@@ -1,15 +1,12 @@
-import Image from "next/image";
+import { SignedIn, UserButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 
-const Header = () => {
+const Header = async () => {
+  const { userId } = await auth();
   return (
     <header className="bg-white py-3">
       <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
-        <a className="block text-teal-600" href="#">
-          <span className="sr-only">Home</span>
-          <Image src="/logo.svg" width={50} height={50} alt="Logo" />
-        </a>
-
         <div className="flex flex-1 items-center justify-end md:justify-between">
           <nav aria-label="Global" className="hidden md:block">
             <ul className="flex items-center gap-6 text-sm tracking-wider text-gray-900 uppercase font-medium">
@@ -47,21 +44,27 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center gap-4">
-            <div className="flex gap-4">
-              <Link
-                className="block border-1 rounded-sm sm:px-[40px] px-[20px] sm:py-2.5 py-1.5 text-sm font-medium text-white transition tracking-wider bg-[#ff7a00] hover:bg-white hover:text-[#ff7a00] hover:border-1 hover:scale-[1.1]"
-                href="/signIn"
-              >
-                Login
-              </Link>
+            {!userId ? (
+              <div className="flex gap-4">
+                <Link
+                  className="block border-1 rounded-sm sm:px-[40px] px-[20px] sm:py-2.5 py-1.5 text-sm font-medium text-white transition tracking-wider bg-[#ff7a00] hover:bg-white hover:text-[#ff7a00] hover:border-1 hover:scale-[1.1]"
+                  href="/signIn"
+                >
+                  Login
+                </Link>
 
-              <Link
-                className="block border-1 rounded-sm sm:px-[40px] px-[20px] sm:py-2.5 py-1.5 text-sm font-medium text-gray-900 transition tracking-wider bg-white hover:bg-gray-900 hover:text-white hover:border-1 hover:scale-[1.1]"
-                href="/signUp"
-              >
-                Register
-              </Link>
-            </div>
+                <Link
+                  className="block border-1 rounded-sm sm:px-[40px] px-[20px] sm:py-2.5 py-1.5 text-sm font-medium text-gray-900 transition tracking-wider bg-white hover:bg-gray-900 hover:text-white hover:border-1 hover:scale-[1.1]"
+                  href="/signUp"
+                >
+                  Register
+                </Link>
+              </div>
+            ) : (
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+            )}
 
             <button className="block rounded-sm bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
               <span className="sr-only">Toggle menu</span>
