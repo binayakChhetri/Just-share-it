@@ -62,7 +62,7 @@ const Sidebar = () => {
                     />
                   </svg>
 
-                  <span className="invisibl absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
+                  <span className="invisible absolute start-full top-1/2 ms-4 -translate-y-1/2 rounded-sm bg-gray-900 px-2 py-1.5 text-xs font-medium text-white group-hover:visible">
                     Billing
                   </span>
                 </a>
