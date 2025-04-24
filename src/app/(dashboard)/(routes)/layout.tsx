@@ -6,7 +6,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     <div className="grid grid-cols-[7.5rem_1fr] grid-rows-[auto_1fr] ">
       <Header />
       <Sidebar />
-      <div className=" flex flex-col items-center">{children}</div>
+      <div className="flex flex-col items-center">{children}</div>
     </div>
   );
 };
