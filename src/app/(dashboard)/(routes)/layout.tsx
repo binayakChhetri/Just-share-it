@@ -11,6 +11,5 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-e
-xport default layout;
+export default layout;
  
