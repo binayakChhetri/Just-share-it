@@ -3,7 +3,7 @@ import Sidebar from "@/app/_components/Sidebar";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="grid grid-cols-[7.5rem_1fr] grid-rows-[auto_1fr] ">
+    <div className="grid grid-cols-[80px_1fr] md:grid-cols-[200px_1fr] grid-rows-[auto_1fr] ">
       <Header />
       <Sidebar />
       <div className="flex flex-col items-center">{children}</div>
@@ -12,4 +12,3 @@ const layout = ({ children }: { children: React.ReactNode }) => {
 };
 
 export default layout;
- 

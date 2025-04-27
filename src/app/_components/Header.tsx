@@ -7,8 +7,8 @@ const Header = async () => {
   return (
     <header className="bg-white py-3 border-b border-gray-100 ">
       {!userId ? (
-        <div className="mx-auto h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-1 items-center justify-end md:justify-between">
+        <div className="flex mx-auto h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-1 items-center justify-center md:justify-between">
             <nav aria-label="Global" className="hidden md:block">
               <ul className="flex items-center gap-6 text-sm tracking-wider text-gray-900 uppercase font-medium">
                 <li>
@@ -81,7 +81,7 @@ const Header = async () => {
           </div>
         </div>
       ) : (
-        <div className="h-16 max-w-screen-xl flex items-center justify-end">
+        <div className="h-16 max-w-screen-xl flex items-center justify-end px-4 sm:px-6 lg:px-8">
           <SignedIn>
             <UserButton />
           </SignedIn>
