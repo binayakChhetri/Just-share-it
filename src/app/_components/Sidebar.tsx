@@ -37,7 +37,7 @@ const Sidebar = () => {
         </div>
 
         <div className="border-t border-gray-100">
-          <div className="py-5">
+          <div>
             {sidebarItems.map((item) => (
               <Link
                 key={item.id}
