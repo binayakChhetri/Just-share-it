@@ -22,32 +22,19 @@ const sidebarItems = [
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(isOpen);
   return (
     <div className="block md:hidden">
       {" "}
       <span onClick={() => setIsOpen(true)}>
         <Menu color="#a0aec0" className="cursor-pointer " />
       </span>
-      {/* {isOpen && ({sidebarItems.map((item) => (
-              <Link
-                key={item.id}
-                href={`/${item.to}`}
-                className="uppercase flex items-center gap-3 my-3 px-4 pt-3 pb-2 border-b border-gray-100 text-gray-500"
-              >
-                {item.icon}
-                <span className="text-sm font-medium tracking-wider hidden md:block">
-                  {item.name}
-                </span>
-              </Link>
-            ))})} */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="bg-gray-950 w-full h-fit p-4 absolute top-0 left-0 z-10 flex flex-col items-center justify-center"
+          className="bg-[#ff9c40] w-full h-full p-4 absolute top-0 left-0 z-10 flex flex-col items-center justify-center"
         >
           <span
             className="absolute top-4 right-4 cursor-pointer text-white"
@@ -57,6 +44,7 @@ const MobileNav = () => {
           </span>
           {sidebarItems.map((item, index) => (
             <motion.li
+              key={index}
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{
