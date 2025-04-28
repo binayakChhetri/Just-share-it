@@ -25,9 +25,9 @@ const Sidebar = () => {
   const pathname = usePathname().split("/")[1];
 
   return (
-    <aside className="flex h-screen w-20 md:w-50 flex-col justify-between border-e border-gray-100 bg-white row-span-full">
+    <aside className="hidden md:flex h-screen w-20 md:w-50 flex-col justify-between border-e border-gray-100 bg-white row-span-full">
       <div>
-        <div className="flex h-[88px]  items-center justify-center">
+        <div className="flex h-[88px] items-center justify-center">
           <Image
             src="./logo.svg"
             width={50}

@@ -1,6 +1,7 @@
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
+import MobileNav from "./MobileNav";
 
 const Header = async () => {
   const { userId } = await auth();
@@ -81,7 +82,8 @@ const Header = async () => {
           </div>
         </div>
       ) : (
-        <div className="h-16 max-w-screen-xl flex items-center justify-end px-4 sm:px-6 lg:px-8">
+        <div className="h-16 max-w-screen-xl flex items-center justify-between md:justify-end px-4 sm:px-6 lg:px-8 mx-auto">
+          <MobileNav />
           <SignedIn>
             <UserButton />
           </SignedIn>
