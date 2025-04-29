@@ -57,13 +57,13 @@ const UploadForm = () => {
           />
         </label>
       </div>
-      <butt
+      <button
         // onClick={(e) => handleUpload(e)}
         disabled={!file}
         className="text-sm tracking-wide w-full max-w-[200px] mx-auto rounded-full cursor-pointer bg-[#ff7b00] disabled:bg-[#ff7b00bd] disabled:cursor-not-allowed text-white font-medium px-5 py-3"
       >
         Upload{"  "}
-      </butt on>
+      </button>
     </form>
   );
 };
