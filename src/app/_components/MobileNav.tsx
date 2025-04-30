@@ -1,7 +1,6 @@
 "use client";
 import { Menu, MonitorUp, Paperclip, X } from "lucide-react";
 import { motion } from "motion/react";
-import { div } from "motion/react-client";
 import Link from "next/link";
 import { useState } from "react";
 
