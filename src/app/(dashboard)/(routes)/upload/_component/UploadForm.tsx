@@ -1,12 +1,11 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const UploadForm = () => {
   const [file, setFile] = useState<File | null>(null);
-
   function onFileSelect(file: File | null) {
-    console.log(file);
-    if (file && file.size > 10000000) {
-      console.log("File size exceeds 10MB");
+    if (file && file.size > 100000) {
+      toast.error("File size exceeds 10MB limit");
       return;
     }
     setFile(file);

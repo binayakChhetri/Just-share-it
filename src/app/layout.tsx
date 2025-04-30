@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 
 import "./globals.css";
 import { roboto } from "./_utlis/fonts";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Just Share It",
@@ -20,7 +21,26 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${roboto.className} antialiased `}>{children}</body>
+        <body className={`${roboto.className} antialiased `}>
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              error: {
+                style: {
+                  border: "1px solid #EF4444",
+                  padding: "16px",
+                  color: "#EF4444",
+                  backgroundColor: "#FEE2E2",
+                },
+                iconTheme: {
+                  primary: "#EF4444",
+                  secondary: "#FEE2E2",
+                },
+              },
+            }}
+          />{" "}
+          {children}
+        </body>
       </html>
     </ClerkProvider>
   );
