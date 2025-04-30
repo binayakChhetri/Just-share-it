@@ -1,26 +1,32 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import FilePreview from "./FilePreview";
 
 const UploadForm = () => {
   const [file, setFile] = useState<File | null>(null);
   function onFileSelect(file: File | null) {
-    if (file && file.size > 100000) {
+    if (file && file.size > 10000000) {
       toast.error("File size exceeds 10MB limit");
+      setFile(null);
+      console.log(file);
       return;
     }
     setFile(file);
   }
 
   return (
-    <form action="" className="flex flex-col gap-5">
+    <form
+      action=""
+      className="flex flex-col gap-5  min-w-[300px] max-w-[900px] mx-auto"
+    >
       <div className="flex items-center justify-center w-full">
         <label
           htmlFor="dropzone-file"
-          className="flex flex-col items-center justify-center w-full h-100 border-3 border-[#ff7a00] border-dashed rounded-lg cursor-pointer bg-[#ff7b0009]  hover:bg-[#ff7b0027]"
+          className="flex flex-col items-center justify-center w-full h-60 border-3 border-[#ff7a00] border-dashed rounded-lg cursor-pointer bg-[#ff7b0009]  hover:bg-[#ff7b0027]"
         >
           <div className="flex flex-col items-center justify-center pt-5 pb-6">
             <svg
-              className="w-20 h-20 mb-4 text-[#ff7a00]"
+              className="w-15 h-15 mb-4 text-[#ff7a00]"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -56,6 +62,7 @@ const UploadForm = () => {
           />
         </label>
       </div>
+      {file && <FilePreview file={file} onClick={() => setFile(null)} />}
       <button
         disabled={!file}
         className="text-sm tracking-wide w-full max-w-[200px] mx-auto rounded-full cursor-pointer bg-[#ff7b00] disabled:bg-[#ff7b00bd] disabled:cursor-not-allowed text-white font-medium px-5 py-3"
