@@ -27,14 +27,16 @@ const Sidebar = () => {
   return (
     <aside className="hidden md:flex h-screen w-20 md:w-50 flex-col justify-between border-e border-gray-100 bg-white row-span-full">
       <div>
-        <div className="flex h-[88px] items-center justify-center">
-          <Image
-            src="./logo.svg"
-            width={50}
-            height={50}
-            alt="Just share it logo"
-          />
-        </div>
+        <Link href="/">
+          <div className="flex h-[88px] items-center justify-center">
+            <Image
+              src="./logo.svg"
+              width={50}
+              height={50}
+              alt="Just share it logo"
+            />
+          </div>
+        </Link>
 
         <div className="border-t border-gray-100">
           <div>
