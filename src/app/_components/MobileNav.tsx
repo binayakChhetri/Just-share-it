@@ -7,7 +7,7 @@ import { useState } from "react";
 const sidebarItems = [
   {
     id: 1,
-    name: "Upload",
+    name: "Upload ",
     to: "upload",
     icon: <MonitorUp size={20} />,
   },
