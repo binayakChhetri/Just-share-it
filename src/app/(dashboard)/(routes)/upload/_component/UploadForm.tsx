@@ -65,6 +65,7 @@ const UploadForm = () => {
       {file && <FilePreview file={file} onClick={() => setFile(null)} />}
       <button
         disabled={!file}
+        onClick={() => console.log("Upload btn was clicked")}
         className="text-sm tracking-wide w-full max-w-[200px] mx-auto rounded-full cursor-pointer bg-[#ff7b00] disabled:bg-[#ff7b00bd] disabled:cursor-not-allowed text-white font-medium px-5 py-3"
       >
         Upload{"  "}
