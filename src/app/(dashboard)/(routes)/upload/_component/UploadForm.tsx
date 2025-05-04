@@ -2,13 +2,20 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import FilePreview from "./FilePreview";
 
-const UploadForm = () => {
+interface UploadFormProps {
+  handleFileUpload: (
+    file: File | null,
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => void;
+}
+
+const UploadForm: React.FC<UploadFormProps> = ({ handleFileUpload }) => {
   const [file, setFile] = useState<File | null>(null);
+
   function onFileSelect(file: File | null) {
     if (file && file.size > 10000000) {
       toast.error("File size exceeds 10MB limit");
       setFile(null);
-      console.log(file);
       return;
     }
     setFile(file);
@@ -65,7 +72,7 @@ const UploadForm = () => {
       {file && <FilePreview file={file} onClick={() => setFile(null)} />}
       <button
         disabled={!file}
-        onClick={() => console.log("Upload btn was clicked")}
+        onClick={(e) => handleFileUpload(file, e)}
         className="text-sm tracking-wide w-full max-w-[200px] mx-auto rounded-full cursor-pointer bg-[#ff7b00] disabled:bg-[#ff7b00bd] disabled:cursor-not-allowed text-white font-medium px-5 py-3"
       >
         Upload{"  "}

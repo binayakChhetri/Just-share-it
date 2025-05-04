@@ -9,7 +9,6 @@ const FilePreview = ({
   onClick: () => void;
 }) => {
   const { name: fileName, size: fileSize } = file;
-  console.log(typeof fileSize);
   return (
     <div className="relative flex items-center gap-2 p-2 border-1 border-[#ff7b00] rounded-sm">
       <FileLogo fill="none" stroke="#ff7b00" strokeWidth={0.5} size={40} />

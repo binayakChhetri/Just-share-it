@@ -1,9 +1,12 @@
-import type { Metadata } from "next";
-import { ClerkProvider } from "@clerk/nextjs";
-
 import "./globals.css";
 import { roboto } from "./_utlis/fonts";
+
+import type { Metadata } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
+
+const queryClient = new QueryClient();
 
 export const metadata: Metadata = {
   title: "Just Share It",
@@ -19,29 +22,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={`${roboto.className} antialiased `}>
-          <Toaster
-            position="top-center"
-            toastOptions={{
-              error: {
-                style: {
-                  border: "1px solid #EF4444",
-                  padding: "16px",
-                  color: "#EF4444",
-                  backgroundColor: "#FEE2E2",
+    <QueryClientProvider client={queryClient}>
+      {" "}
+      <ClerkProvider>
+        <html lang="en">
+          <body className={`${roboto.className} antialiased `}>
+            <Toaster
+              position="top-center"
+              toastOptions={{
+                error: {
+                  style: {
+                    border: "1px solid #EF4444",
+                    padding: "16px",
+                    color: "#EF4444",
+                    backgroundColor: "#FEE2E2",
+                  },
+                  iconTheme: {
+                    primary: "#EF4444",
+                    secondary: "#FEE2E2",
+                  },
                 },
-                iconTheme: {
-                  primary: "#EF4444",
-                  secondary: "#FEE2E2",
-                },
-              },
-            }}
-          />{" "}
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+              }}
+            />{" "}
+            {children}
+          </body>
+        </html>
+      </ClerkProvider>
+    </QueryClientProvider>
   );
 }
