@@ -1,6 +1,6 @@
-import { supabase, supabaseUrl } from "../../../supabase";
-
-const uploadFile = async (file: File): Promise<void> => {
+import { supabase, supabaseUrl } from "../../../../supabase";
+console.log(supabase);
+export const uploadFile = async (file: File): Promise<void> => {
   const fileName = `${Math.random()}-${file.name}`.replaceAll("/", "");
   const filePath = `${supabaseUrl}/storage/v1/object/public/files/${fileName}`;
   const fileData = {
@@ -31,4 +31,11 @@ const uploadFile = async (file: File): Promise<void> => {
   return data;
 };
 
-export { uploadFile };
+export const getFile = async () => {
+  let { data, error } = await supabase.from("files").select("*");
+  if (error) {
+    throw new Error("Cabins could not be loaded");
+  }
+
+  return data;
+};

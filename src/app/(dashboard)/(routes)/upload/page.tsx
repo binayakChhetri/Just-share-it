@@ -1,12 +1,20 @@
 "use client";
+import { useUploadFile } from "@/app/_services/_file/useUploadFile";
 import UploadForm from "./_component/UploadForm";
+import { useGetFile } from "@/app/_services/_file/useGetFile";
 
 const Upload = () => {
+  const { fileUpload, status } = useUploadFile();
+
   function handleFileUpload(file: File | null, e: React.MouseEvent) {
     e.preventDefault();
     console.log("File uploaded:", file);
+    if (file) {
+      fileUpload(file);
+    }
     return;
   }
+  const { files, error, isLoading } = useGetFile();
 
   return (
     <div className="max-w-screen-xl w-full py-2 px-4 sm:px-6 lg:px-8">

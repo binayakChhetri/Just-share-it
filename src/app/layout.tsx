@@ -3,10 +3,8 @@ import { roboto } from "./_utlis/fonts";
 
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
-
-const queryClient = new QueryClient();
+import QueryProvider from "./_components/QueryProvider";
 
 export const metadata: Metadata = {
   title: "Just Share It",
@@ -22,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryProvider>
       {" "}
       <ClerkProvider>
         <html lang="en">
@@ -48,6 +46,6 @@ export default function RootLayout({
           </body>
         </html>
       </ClerkProvider>
-    </QueryClientProvider>
+    </QueryProvider>
   );
 }
