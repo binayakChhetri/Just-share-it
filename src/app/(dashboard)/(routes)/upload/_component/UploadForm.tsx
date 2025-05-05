@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import FilePreview from "./FilePreview";
@@ -7,9 +8,13 @@ interface UploadFormProps {
     file: File | null,
     event: React.MouseEvent<HTMLButtonElement>
   ) => void;
+  status?: string;
 }
 
-const UploadForm: React.FC<UploadFormProps> = ({ handleFileUpload }) => {
+const UploadForm: React.FC<UploadFormProps> = ({
+  handleFileUpload,
+  status,
+}) => {
   const [file, setFile] = useState<File | null>(null);
 
   function onFileSelect(file: File | null) {
@@ -75,7 +80,7 @@ const UploadForm: React.FC<UploadFormProps> = ({ handleFileUpload }) => {
         onClick={(e) => handleFileUpload(file, e)}
         className="text-sm tracking-wide w-full max-w-[200px] mx-auto rounded-full cursor-pointer bg-[#ff7b00] disabled:bg-[#ff7b00bd] disabled:cursor-not-allowed text-white font-medium px-5 py-3"
       >
-        Upload{"  "}
+        {status === "pending" ? "Uploading" : "Upload"}
       </button>
     </form>
   );

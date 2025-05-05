@@ -1,6 +1,5 @@
 import { supabase, supabaseUrl } from "../../../../supabase";
-console.log(supabase);
-export const uploadFile = async (file: File): Promise<void> => {
+export const uploadFile = async (file: File, userId: string): Promise<void> => {
   const fileName = `${Math.random()}-${file.name}`.replaceAll("/", "");
   const filePath = `${supabaseUrl}/storage/v1/object/public/files/${fileName}`;
   const fileData = {
@@ -8,6 +7,7 @@ export const uploadFile = async (file: File): Promise<void> => {
     size: file.size,
     type: file.type,
     path: filePath,
+    uploaded_by: userId,
   };
 
   let query = supabase.from("files").insert([{ ...fileData }]);

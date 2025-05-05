@@ -6,7 +6,8 @@ export const useUploadFile = () => {
   const queryClient = useQueryClient();
 
   const { mutate: fileUpload, status } = useMutation({
-    mutationFn: uploadFile,
+    mutationFn: ({ file, userId }: { file: File; userId: string }) =>
+      uploadFile(file, userId),
     onSuccess: () => {
       toast.success("File uploaded successfully");
       queryClient.invalidateQueries({
