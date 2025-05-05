@@ -1,6 +1,8 @@
 import { supabase, supabaseUrl } from "../../../../supabase";
 export const uploadFile = async (file: File, userId: string): Promise<void> => {
-  const fileName = `${Math.random()}-${file.name}`.replaceAll("/", "");
+  const fileName = `${Math.random()}-${file.name}`
+    .replaceAll("/", "")
+    .replaceAll(" ", "");
   const filePath = `${supabaseUrl}/storage/v1/object/public/files/${fileName}`;
   const fileData = {
     name: file.name,
