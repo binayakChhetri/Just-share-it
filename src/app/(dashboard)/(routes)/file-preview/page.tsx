@@ -16,9 +16,9 @@ const page = () => {
     return <p>Loading...</p>;
   }
 
-  let type, name, size, fileSize;
+  let name, size, fileSize, path;
   if (data) {
-    ({ type, name, size } = data[0]);
+    ({ name, size, path } = data[0]);
     fileSize = bytesToMb(size);
   }
 
@@ -34,7 +34,7 @@ const page = () => {
         <div className="text-center px-8 py-4 grow">
           {data && <p>{name}</p>}
           <p className="text-sm text-gray-500 mt-[-3px]">
-            {data && type}
+            {data && "." + name.split(".").pop()}
             {fileSize && `,  ${fileSize} MB`}
           </p>
         </div>
@@ -47,6 +47,8 @@ const page = () => {
               URL
             </label>
             <input
+              readOnly
+              value={path}
               type="text"
               id="file-url"
               placeholder="File link"
