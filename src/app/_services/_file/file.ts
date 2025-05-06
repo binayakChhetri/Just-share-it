@@ -46,14 +46,16 @@ export const getFile = async () => {
 
 // Get latest file uploaded by the specific user
 export const getLatestFile = async (userId: string) => {
-  const { data: latestFile, error } = await supabase
+  const { data, error } = await supabase
     .from("files")
     .select("*")
     .eq("uploaded_by", userId)
     .order("created_at", { ascending: false })
     .limit(1);
-
-  return { latestFile, error };
+  if (error) {
+    throw new Error("Cabins could not be loaded");
+  }
+  return data;
 };
 
 // Get latest file link uploaded by the specific user

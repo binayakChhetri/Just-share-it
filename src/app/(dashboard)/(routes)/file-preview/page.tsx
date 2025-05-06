@@ -1,8 +1,27 @@
+"use client";
+import { useGetFile } from "@/app/_services/_file/useGetLatestFile";
+import { bytesToMb } from "@/app/_utlis/fileUtlis";
+import { useAuth } from "@clerk/nextjs";
 import { SquareChevronLeft } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 const page = () => {
+  const { userId } = useAuth();
+  const { data, error, isLoading } = useGetFile(userId || "");
+
+  if (error) {
+    return <p>Something went wrong</p>;
+  }
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  let type, name, size, fileSize;
+  if (data) {
+    ({ type, name, size } = data[0]);
+    fileSize = bytesToMb(size);
+  }
+
   return (
     <div className="flex flex-col gap-5  min-w-[300px] max-w-[900px] mx-auto w-full  py-2 px-4 sm:px-6 lg:px-8">
       <div>
@@ -13,8 +32,11 @@ const page = () => {
       </div>
       <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-10 px-5 py-10 border-1 border-gray-200 rounded-lg">
         <div className="text-center px-8 py-4 grow">
-          <p>File name</p>
-          <p>File type and size</p>
+          {data && <p>{name}</p>}
+          <p className="text-sm text-gray-500 mt-[-3px]">
+            {data && type}
+            {fileSize && `,  ${fileSize} MB`}
+          </p>
         </div>
         <div className="flex flex-col gap-5 grow w-full sm:w-fit">
           <div className="flex flex-col">
