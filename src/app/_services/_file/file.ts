@@ -1,4 +1,5 @@
 import { supabase, supabaseUrl } from "../../../../supabase";
+
 export const uploadFile = async (file: File, userId: string): Promise<void> => {
   const fileName = `${Math.random()}-${file.name}`
     .replaceAll("/", "")
@@ -33,6 +34,7 @@ export const uploadFile = async (file: File, userId: string): Promise<void> => {
   return data;
 };
 
+// Get all files uploaded by the specific user
 export const getFile = async () => {
   let { data, error } = await supabase.from("files").select("*");
   if (error) {
@@ -41,3 +43,18 @@ export const getFile = async () => {
 
   return data;
 };
+
+// Get latest file uploaded by the specific user
+export const getLatestFile = async (userId: string) => {
+  const { data: latestFile, error } = await supabase
+    .from("files")
+    .select("*")
+    .eq("uploaded_by", userId)
+    .order("created_at", { ascending: false })
+    .limit(1);
+
+  return { latestFile, error };
+};
+
+// Get latest file link uploaded by the specific user
+export const getLatestFileLink = () => {};
