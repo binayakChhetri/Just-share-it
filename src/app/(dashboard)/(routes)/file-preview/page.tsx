@@ -38,7 +38,6 @@ const page = () => {
 
   const sendEmail = (data: any, e: React.FormEvent) => {
     e.preventDefault();
-    console.log(data);
     const fileData = {
       emailToSend: email,
       fileName: data.name,
@@ -48,7 +47,6 @@ const page = () => {
       sendTime: getCurrentDate(),
     };
     SendEmail(fileData).then((res) => {
-      console.log(res);
       res.statusText === "OK"
         ? toast.success("Email sent successfully")
         : toast.error("Email not sent");

@@ -6,14 +6,20 @@ import {
   Head,
   Heading,
   Html,
-  Img,
   Preview,
   Row,
   Section,
   Text,
 } from "@react-email/components";
 
-const EmailTemplate = ({ response }: any) => {
+const EmailTemplate = ({
+  fileName,
+  fileSize,
+  emailToSend,
+  url,
+  sendTime,
+  fileType,
+}: any) => {
   return (
     <Html>
       <Head />
@@ -30,25 +36,25 @@ const EmailTemplate = ({ response }: any) => {
                     textAlign: "center",
                   }}
                 >
-                  Hi {response.emailToSend.split("@")[0]}, someone has shared a
-                  file with you
+                  Hi {emailToSend.split("@")[0]}, someone has shared a file with
+                  you
                 </Heading>
 
                 <Text style={paragraph}>
                   <b>File name: </b>
-                  {response.fileName}
+                  {fileName}
                 </Text>
                 <Text style={paragraph}>
                   <b>Time: </b>
-                  {response.sendTime}
+                  {sendTime}
                 </Text>
                 <Text style={{ ...paragraph, marginTop: -5 }}>
                   <b>Size: </b>
-                  {response.fileSize} MB
+                  {fileSize} MB
                 </Text>
                 <Text style={{ ...paragraph, marginTop: -5 }}>
                   <b>File type: </b>
-                  {response.fileType}
+                  {fileType}
                 </Text>
                 <Text
                   style={{
@@ -58,13 +64,13 @@ const EmailTemplate = ({ response }: any) => {
                   }}
                 >
                   <b>File link:</b>
-                  {response.url}
+                  {url}
                 </Text>
               </Column>
             </Row>
             <Row style={{ ...boxInfos, paddingTop: "0" }}>
               <Column style={buttonContainer} colSpan={2}>
-                <Button style={button} href={response.url}>
+                <Button style={button} href={url}>
                   Click here to get the file
                 </Button>
               </Column>

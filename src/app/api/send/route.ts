@@ -4,14 +4,23 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
-  const response = await req.json();
-  console.log(response);
+  const { emailToSend, fileName, fileSize, fileType, url, sendTime } =
+    await req.json();
+
+  if (emailToSend) console.log(emailToSend);
   try {
     const { data, error } = await resend.emails.send({
       from: "justshareit@resend.dev",
-      to: [response.emailToSend],
+      to: ["binayakchhetri1234@gmail.com"],
       subject: "File shared with you",
-      react: EmailTemplate({ response }),
+      react: EmailTemplate({
+        fileName,
+        fileSize,
+        fileType,
+        url,
+        sendTime,
+        emailToSend,
+      }),
     });
 
     if (error) {
