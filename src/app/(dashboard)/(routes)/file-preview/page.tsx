@@ -2,11 +2,17 @@
 import { useGetFile } from "@/app/_services/_file/useGetLatestFile";
 import { bytesToMb } from "@/app/_utlis/fileUtlis";
 import { useAuth } from "@clerk/nextjs";
-import { SquareChevronLeft } from "lucide-react";
+import { Copy, SquareChevronLeft } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 const page = () => {
   const { userId } = useAuth();
+  if (!userId) {
+    redirect("/");
+  }
+  console.log(userId);
   const { data, error, isLoading } = useGetFile(userId || "");
 
   if (error) {
@@ -16,7 +22,10 @@ const page = () => {
     return <p>Loading...</p>;
   }
 
-  let name, size, fileSize, path;
+  let name,
+    size,
+    fileSize,
+    path: string | number | readonly string[] | undefined;
   if (data) {
     ({ name, size, path } = data[0]);
     fileSize = bytesToMb(size);
@@ -39,7 +48,7 @@ const page = () => {
           </p>
         </div>
         <div className="flex flex-col gap-5 grow w-full sm:w-fit">
-          <div className="flex flex-col">
+          <div className="flex flex-col relative">
             <label
               htmlFor="file-url"
               className="block text-sm font-medium text-gray-600 mb-1"
@@ -52,7 +61,19 @@ const page = () => {
               type="text"
               id="file-url"
               placeholder="File link"
-              className="w-full px-3 py-2 text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent bg-gray-50"
+              className="w-full pl-3 pr-8 py-2 text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-transparent bg-gray-50"
+            />
+            <Copy
+              className="absolute right-1.5 top-9 z-10 cursor-pointer hover:scale-110"
+              size={20}
+              color="#c4c8d0"
+              strokeWidth={1}
+              onClick={() => {
+                if (typeof path === "string") {
+                  navigator.clipboard.writeText(path);
+                  toast.success("File link copied to clipboard");
+                }
+              }}
             />
           </div>
           <div className="flex flex-col">

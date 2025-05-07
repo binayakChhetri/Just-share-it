@@ -8,6 +8,7 @@ export default async function Home() {
   if (userId) {
     redirect("/upload");
   }
+
   return (
     <div>
       <Header />
