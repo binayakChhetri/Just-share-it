@@ -10,14 +10,17 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.13.0",
+    "@react-email/components": "0.0.38",
     "@supabase/supabase-js": "^2.49.4",
     "@tanstack/react-query": "^5.75.2",
+    "axios": "^1.9.0",
     "lucide-react": "^0.503.0",
     "motion": "^12.9.2",
     "next": "15.2.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-hot-toast": "^2.5.2"
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-hot-toast": "^2.5.2",
+    "resend": "^4.5.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -27,6 +30,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
+    "react-email": "4.0.11",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

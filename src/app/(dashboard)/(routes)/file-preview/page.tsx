@@ -1,20 +1,25 @@
 "use client";
 import { useGetFile } from "@/app/_services/_file/useGetLatestFile";
 import { bytesToMb } from "@/app/_utlis/fileUtlis";
+import SendEmail from "@/app/_utlis/globalApi";
+import { getCurrentDate } from "@/app/_utlis/time";
 import { useAuth } from "@clerk/nextjs";
 import { Copy, SquareChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { useState } from "react";
 import toast from "react-hot-toast";
 
 const page = () => {
+  const [email, setEmail] = useState<string>("");
+
   const { userId } = useAuth();
+
   if (!userId) {
     redirect("/");
   }
-  console.log(userId);
-  const { data, error, isLoading } = useGetFile(userId || "");
 
+  const { data, error, isLoading } = useGetFile(userId || "");
   if (error) {
     return <p>Something went wrong</p>;
   }
@@ -31,8 +36,30 @@ const page = () => {
     fileSize = bytesToMb(size);
   }
 
+  const sendEmail = (data: any, e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(data);
+    const fileData = {
+      emailToSend: email,
+      fileName: data.name,
+      fileSize: bytesToMb(data.size),
+      fileType: data.type,
+      url: data.path,
+      sendTime: getCurrentDate(),
+    };
+    SendEmail(fileData).then((res) => {
+      console.log(res);
+      res.statusText === "OK"
+        ? toast.success("Email sent successfully")
+        : toast.error("Email not sent");
+    });
+  };
+
   return (
-    <div className="flex flex-col gap-5  min-w-[300px] max-w-[900px] mx-auto w-full  py-2 px-4 sm:px-6 lg:px-8">
+    <form
+      onSubmit={(e) => sendEmail(data?.[0], e)}
+      className="flex flex-col gap-5  min-w-[300px] max-w-[900px] mx-auto w-full  py-2 px-4 sm:px-6 lg:px-8"
+    >
       <div>
         <Link href="/upload" className="flex gap-2 items-center text-gray-500">
           <SquareChevronLeft stroke="#6a7282 " />
@@ -84,6 +111,9 @@ const page = () => {
               Send File to Email
             </label>
             <input
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               id="send-email"
               placeholder="example@gmail.com"
@@ -95,7 +125,7 @@ const page = () => {
           </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 
