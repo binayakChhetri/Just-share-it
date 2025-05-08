@@ -1,21 +1,20 @@
 "use client";
-import { useGetFile } from "@/app/_services/_file/useGetLatestFile";
-import { bytesToMb } from "@/app/_utlis/fileUtlis";
-import SendEmail from "@/app/_utlis/globalApi";
-import { getCurrentDate } from "@/app/_utlis/time";
-import { useAuth } from "@clerk/nextjs";
+
 import { Copy, SquareChevronLeft } from "lucide-react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useGetFile } from "../_services/_file/useGetLatestFile";
+import { bytesToMb } from "../_utlis/fileUtlis";
+import { getCurrentDate } from "../_utlis/time";
+import SendEmail from "../_utlis/globalApi";
+import { useAuth } from "@clerk/nextjs";
 
-const page = () => {
-  const [email, setEmail] = useState<string>("");
-
+const Preview = () => {
   const { userId } = useAuth();
-
   const { data, error, isLoading } = useGetFile(userId || "");
+
+  const [email, setEmail] = useState<string>("");
   if (error) {
     return <p>Something went wrong</p>;
   }
@@ -127,4 +126,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Preview;

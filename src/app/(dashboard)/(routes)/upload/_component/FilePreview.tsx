@@ -1,14 +1,25 @@
 import { bytesToMb } from "@/app/_utlis/fileUtlis";
-import { File as FileLogo, X as Close, Trash2, Loader } from "lucide-react";
+import {
+  File as FileLogo,
+  X as Close,
+  Trash2,
+  Loader,
+  Eye,
+  ExternalLink,
+} from "lucide-react";
 
 const FilePreview = ({
   file,
-  onClick,
   preview,
+  onClick,
+  onDelete,
+  onSee,
 }: {
   file: File;
-  onClick?: () => void;
   preview?: boolean;
+  onClick?: () => void;
+  onDelete?: () => void;
+  onSee?: () => void;
 }) => {
   const { name: fileName, size: fileSize } = file;
 
@@ -24,18 +35,25 @@ const FilePreview = ({
 
       {preview ? (
         <>
-          <Trash2
-            className="absolute right-2 cursor-pointer"
+          <ExternalLink
+            className="absolute right-15 cursor-pointer hover:scale-110"
             size={20}
             stroke="#ff7b00"
             strokeWidth={2}
             onClick={onClick}
           />
+          <Trash2
+            className="absolute right-5 cursor-pointer hover:scale-110"
+            size={20}
+            stroke="#ff7b00"
+            strokeWidth={2}
+            onClick={onDelete}
+          />
         </>
       ) : (
         <>
           <Close
-            className="absolute right-2 cursor-pointer"
+            className="absolute right-5 cursor-pointer"
             size={20}
             stroke="#ff7b00"
             strokeWidth={2}

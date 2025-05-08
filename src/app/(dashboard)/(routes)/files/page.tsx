@@ -25,7 +25,7 @@ const page = () => {
           key={index}
           file={file}
           preview={true}
-          onClick={() => handleDelFile(file.id)}
+          onDelete={() => handleDelFile(file.id)}
         />
       ))}
     </div>

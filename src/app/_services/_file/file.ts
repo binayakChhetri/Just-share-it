@@ -74,3 +74,16 @@ export const deleteFile = async (id: number) => {
   }
   return data;
 };
+
+// Get file by id
+export const getFileById = async (id: number) => {
+  const { data, error } = await supabase
+    .from("files")
+    .select("*")
+    .eq("id", id)
+    .single();
+  if (error) {
+    throw new Error("File could not be loaded");
+  }
+  return data;
+};
