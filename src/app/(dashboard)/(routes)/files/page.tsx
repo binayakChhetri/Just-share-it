@@ -17,6 +17,7 @@ const page = () => {
     fileDelete(id);
   };
 
+  if (files?.length === 0) return <p>No files uploaded</p>;
   return (
     <div className="max-w-screen-xl w-full h-[500px] px-4 sm:px-6 lg:px-8 overflow-y-scroll">
       {files?.map((file, index) => (

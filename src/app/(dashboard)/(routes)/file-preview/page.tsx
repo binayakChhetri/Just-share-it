@@ -31,8 +31,12 @@ const page = () => {
     size,
     fileSize,
     path: string | number | readonly string[] | undefined;
+
+  if (data?.length === 0) {
+    return <p>No files uploaded</p>;
+  }
   if (data) {
-    ({ name, size, path } = data[0]);
+    ({ name, size, path } = data?.[0]);
     fileSize = bytesToMb(size);
   }
 

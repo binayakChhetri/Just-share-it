@@ -11,6 +11,7 @@ const FilePreview = ({
   preview?: boolean;
 }) => {
   const { name: fileName, size: fileSize } = file;
+
   return (
     <div
       className={`relative flex items-center gap-2 p-2 border-1 border-[#ff7b00] rounded-sm ${preview ? "mb-3" : ""}`}
