@@ -9,7 +9,6 @@ const Upload = () => {
   const { userId } = useAuth();
   function handleFileUpload(file: File | null, e: React.MouseEvent) {
     e.preventDefault();
-    console.log("File uploaded:", file);
 
     if (file && userId) {
       fileUpload({ file, userId });

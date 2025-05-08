@@ -35,8 +35,11 @@ export const uploadFile = async (file: File, userId: string): Promise<void> => {
 };
 
 // Get all files uploaded by the specific user
-export const getFile = async () => {
-  let { data, error } = await supabase.from("files").select("*");
+export const getAllFiles = async (userId: string) => {
+  let { data, error } = await supabase
+    .from("files")
+    .select("*")
+    .eq("uploaded_by", userId);
   if (error) {
     throw new Error("Cabins could not be loaded");
   }
@@ -58,5 +61,16 @@ export const getLatestFile = async (userId: string) => {
   return data;
 };
 
-// Get latest file link uploaded by the specific user
-export const getLatestFileLink = () => {};
+// Delete file from Supabase storage and database
+export const deleteFile = async (id: number) => {
+  const { data, error } = await supabase
+    .from("files")
+    .delete()
+    .eq("id", id)
+    .select("*");
+  // .single();
+  if (error) {
+    throw new Error("File could not be deleted");
+  }
+  return data;
+};
