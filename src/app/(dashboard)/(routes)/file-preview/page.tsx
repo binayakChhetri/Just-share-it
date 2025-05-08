@@ -15,10 +15,6 @@ const page = () => {
 
   const { userId } = useAuth();
 
-  if (!userId) {
-    redirect("/");
-  }
-
   const { data, error, isLoading } = useGetFile(userId || "");
   if (error) {
     return <p>Something went wrong</p>;
