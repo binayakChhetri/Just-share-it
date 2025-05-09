@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SendEmail = (data: any) => {
+const SendEmail = (data: {}) => {
   return axios.post("/api/send", data);
 };
 
