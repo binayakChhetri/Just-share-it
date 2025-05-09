@@ -1,4 +1,5 @@
-## Getting Started
+## Just Share It
+
 
 First, run the development server:
 
