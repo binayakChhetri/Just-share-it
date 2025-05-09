@@ -3,25 +3,23 @@ import {
   File as FileLogo,
   X as Close,
   Trash2,
-  Loader,
-  Eye,
   ExternalLink,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const FilePreview = ({
   file,
   preview,
   onClick,
   onDelete,
-  onSee,
 }: {
-  file: File;
+  file: any;
   preview?: boolean;
   onClick?: () => void;
   onDelete?: () => void;
-  onSee?: () => void;
 }) => {
-  const { name: fileName, size: fileSize } = file;
+  const { name: fileName, size: fileSize, id } = file;
+  const router = useRouter();
 
   return (
     <div
@@ -40,7 +38,7 @@ const FilePreview = ({
             size={20}
             stroke="#ff7b00"
             strokeWidth={2}
-            onClick={onClick}
+            onClick={() => router.push(`/file-preview/${id}`)}
           />
           <Trash2
             className="absolute right-5 cursor-pointer hover:scale-110"

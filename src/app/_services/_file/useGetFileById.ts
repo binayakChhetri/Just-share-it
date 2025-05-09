@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { getLatestFile } from "./file";
+import { getFileById } from "./file";
 
-export const useGetLatestFile = (userId: string) => {
+export const useGetFileById = (id: number | string) => {
   const { data, error, isLoading } = useQuery({
-    queryKey: ["files", userId],
+    queryKey: ["files", id],
     queryFn: ({ queryKey }) => {
-      const [, userId] = queryKey;
-      return getLatestFile(userId);
+      const [, id] = queryKey;
+      return getFileById(id);
     },
     // ensures query only runs when userId is available
-    enabled: !!userId,
+    enabled: !!id,
   });
 
   return { data, error, isLoading };

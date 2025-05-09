@@ -1,6 +1,6 @@
 import { supabase, supabaseUrl } from "../../../../supabase";
 
-export const uploadFile = async (file: File, userId: string): Promise<void> => {
+export const uploadFile = async (file: File, userId: string) => {
   const fileName = `${Math.random()}-${file.name}`
     .replaceAll("/", "")
     .replaceAll(" ", "");
@@ -13,8 +13,11 @@ export const uploadFile = async (file: File, userId: string): Promise<void> => {
     uploaded_by: userId,
   };
 
-  let query = supabase.from("files").insert([{ ...fileData }]);
-  const { data, error } = await query.select().single();
+  const { data, error } = await supabase
+    .from("files")
+    .insert([fileData])
+    .select()
+    .single();
 
   if (error) {
     throw new Error("Cabin could not be created");
@@ -63,20 +66,28 @@ export const getLatestFile = async (userId: string) => {
 
 // Delete file from Supabase storage and database
 export const deleteFile = async (id: number) => {
+  // Delete from the table
   const { data, error } = await supabase
+
     .from("files")
     .delete()
     .eq("id", id)
     .select("*");
-  // .single();
-  if (error) {
+
+  // Delete from storage
+  const fileName = data?.[0].path.split("/").pop();
+  const { data: bucketData, error: bucketError } = await supabase.storage
+    .from("files")
+    .remove([fileName]);
+
+  if (error || bucketError) {
     throw new Error("File could not be deleted");
   }
-  return data;
+  return { data, bucketData };
 };
 
 // Get file by id
-export const getFileById = async (id: number) => {
+export const getFileById = async (id: number | string) => {
   const { data, error } = await supabase
     .from("files")
     .select("*")

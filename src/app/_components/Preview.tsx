@@ -4,16 +4,15 @@ import { Copy, SquareChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useGetFile } from "../_services/_file/useGetLatestFile";
 import { bytesToMb } from "../_utlis/fileUtlis";
 import { getCurrentDate } from "../_utlis/time";
 import SendEmail from "../_utlis/globalApi";
-import { useAuth } from "@clerk/nextjs";
+import { useGetFileById } from "../_services/_file/useGetFileById";
+import { useRouter } from "next/navigation";
 
-const Preview = () => {
-  const { userId } = useAuth();
-  const { data, error, isLoading } = useGetFile(userId || "");
-
+const Preview = ({ id }: { id: number | string }) => {
+  const { data, error, isLoading } = useGetFileById(id || "");
+  const router = useRouter();
   const [email, setEmail] = useState<string>("");
   if (error) {
     return <p>Something went wrong</p>;
@@ -27,11 +26,11 @@ const Preview = () => {
     fileSize,
     path: string | number | readonly string[] | undefined;
 
-  if (data?.length === 0) {
+  if (data && Object.keys(data).length === 0) {
     return <p>No files uploaded</p>;
   }
   if (data) {
-    ({ name, size, path } = data?.[0]);
+    ({ name, size, path } = data);
     fileSize = bytesToMb(size);
   }
 
@@ -59,8 +58,7 @@ const Preview = () => {
     >
       <div>
         <Link href="/upload" className="flex gap-2 items-center text-gray-500">
-          <SquareChevronLeft stroke="#6a7282 " />
-          <span className="font-medium">Go to Upload</span>
+          <SquareChevronLeft stroke="#6a7282 " onClick={() => router.back()} />
         </Link>
       </div>
       <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-10 px-5 py-10 border-1 border-gray-200 rounded-lg">

@@ -9,15 +9,22 @@ const Upload = () => {
   const { userId } = useAuth();
   const router = useRouter();
 
-  function handleFileUpload(file: File | null, e: React.MouseEvent) {
+  async function handleFileUpload(file: File | null, e: React.MouseEvent) {
     e.preventDefault();
     if (file && userId) {
-      fileUpload({ file, userId });
+      fileUpload(
+        { file, userId },
+        {
+          onSuccess: (data) => {
+            console.log("File uploaded successfully", data);
+            router.push(`/file-preview/${data.id}`);
+          },
+        }
+      );
     }
     return;
   }
 
-  if (status === "success") router.push("file-preview/latest-file");
   return (
     <div className="max-w-screen-xl w-full py-2 px-4 sm:px-6 lg:px-8">
       <h2 className="text-xl md:text-2xl font-semibold text-gray-900 text-center mb-10">
