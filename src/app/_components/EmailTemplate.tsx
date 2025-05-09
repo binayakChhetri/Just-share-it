@@ -104,10 +104,6 @@ const paragraph = {
   fontSize: 16,
 };
 
-const logo = {
-  padding: "30px 20px",
-};
-
 const buttonContainer = {
   textAlign: "center" as const,
 };
@@ -130,14 +126,6 @@ const content = {
   overflow: "hidden",
 };
 
-const image = {
-  maxWidth: "100%",
-};
-
 const boxInfos = {
   padding: "20px",
-};
-
-const containerImageFooter = {
-  padding: "45px 0 0 0",
 };

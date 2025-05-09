@@ -39,7 +39,7 @@ export const uploadFile = async (file: File, userId: string) => {
 
 // Get all files uploaded by the specific user
 export const getAllFiles = async (userId: string) => {
-  let { data, error } = await supabase
+  const { data, error } = await supabase
     .from("files")
     .select("*")
     .eq("uploaded_by", userId);
