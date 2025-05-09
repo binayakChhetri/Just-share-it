@@ -2,7 +2,7 @@
 A web application that helps users to upload, retrive their files and share it.
 
 # Live link of the application
-Live: [just-share-it.vercel.app](https://just-share-it.vercel.app/)
+Live: [Just Share It](https://just-share-it.vercel.app/)
 
 # Features
 - 🔐 User sign in and sign up 
