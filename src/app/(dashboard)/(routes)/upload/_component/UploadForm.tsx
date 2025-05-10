@@ -59,7 +59,7 @@ const UploadForm: React.FC<UploadFormProps> = ({
               or <strong className="text-[#ff7a00]"> drag</strong> and drop
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              SVG, PNG, JPG, GIF, DOCS, PDF (MAX. 5MB)
+              SVG, PNG, JPG, GIF, DOCS, PDF (MAX. 10MB)
             </p>
           </div>
           <input
