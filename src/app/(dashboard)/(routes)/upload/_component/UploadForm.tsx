@@ -45,7 +45,7 @@ const UploadForm: React.FC<UploadFormProps> = ({
               viewBox="0 0 20 16"
             >
               <path
-                stroke="currentColor"
+                stroke=" currentColor"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
