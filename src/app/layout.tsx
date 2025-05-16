@@ -26,7 +26,7 @@ export default function RootLayout({
         <html lang="en">
           <body className={`${roboto.className} antialiased `}>
             <Toaster
-              position="top-center"
+              position="top-cente"
               toastOptions={{
                 error: {
                   style: {
