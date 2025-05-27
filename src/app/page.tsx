@@ -10,9 +10,9 @@ export default async function Home() {
   }
 
   return (
-    // <div>
-    //   <Header />
-    //   <Hero />
-    // </div>
+    <div>
+      <Header />
+      <Hero />
+    </div>
   );
 }
