@@ -36,7 +36,7 @@ export default function RootLayout({
                     backgroundColor: "#FEE2E2",
                   },
                   iconTheme: {
-                    primary: "#EF444",
+                    primary: "#EF4444",
                     secondary: "#FEE2E2",
                   },
                 },
