@@ -14,7 +14,7 @@ export const uploadFile = async (file: File, userId: string) => {
   };
 
   const { data, error } = await supabase
-    .from("")
+    .from("files")
     .insert([fileData])
     .select()
     .single();
