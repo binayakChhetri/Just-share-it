@@ -4,7 +4,7 @@ export const uploadFile = async (file: File, userId: string) => {
   const fileName = `${Math.random()}-${file.name}`
     .replaceAll("/", "")
     .replaceAll(" ", "");
-  const filePath = `${supabaseUrl}/storage/v1/object/public/files/${fileName}`;
+  const filePath = `${supabaseUrl}/storage/v1 /object/public/files/${fileName}`;
   const fileData = {
     name: file.name,
     size: file.size,
