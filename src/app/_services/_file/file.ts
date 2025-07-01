@@ -10,7 +10,7 @@ export const uploadFile = async (file: File, userId: string) => {
     size: file.size,
     type: file.type,
     path: filePath,
-    // uploaded_by: userId,
+    uploaded_by: userId,
   };
 
   const { data, error } = await supabase
