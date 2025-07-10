@@ -23,7 +23,7 @@ export const uploadFile = async (file: File, userId: string) => {
     throw new Error("Cabin could not be created");
   }
 
-  Upload the file to Supabase storage
+  // Upload the file to Supabase storage
   const { error: storageError } = await supabase.storage
     .from("files")
     .upload(fileName, file);
