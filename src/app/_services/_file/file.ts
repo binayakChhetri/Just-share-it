@@ -24,9 +24,8 @@ export const uploadFile = async (file: File, userId: string) => {
   }
 
   // Upload the file to Supabase storage
-  const { error: storageError } = await supabase.storage
-    .from("files")
-    .upload(fileName, file);
+  const { error: storageError } = await supabase.storage.from("files");
+  // .upload(fileName, file);
 
   // Delete the file from Supabase storage if there was an error
   if (storageError) {
