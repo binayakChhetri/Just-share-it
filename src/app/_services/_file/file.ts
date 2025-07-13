@@ -16,8 +16,8 @@ export const uploadFile = async (file: File, userId: string) => {
   const { data, error } = await supabase
     .from("files")
     .insert([fileData])
-    .select();
-  // .single();
+    .select()
+    .single();
 
   if (error) {
     throw new Error("Cabin could not be created");
