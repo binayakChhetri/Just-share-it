@@ -34,7 +34,7 @@ export const uploadFile = async (file: File, userId: string) => {
     throw new Error("File upload failed ");
   }
 
-  // return data;
+  return data;
 };
 
 // Get all files uploaded by the specific user
