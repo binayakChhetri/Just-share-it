@@ -19,7 +19,7 @@ export const uploadFile = async (file: File, userId: string) => {
     .select()
     .single();
 
-  if (error) {
+  // if (error) {
     throw new Error("Cabin could not be created");
   }
 
