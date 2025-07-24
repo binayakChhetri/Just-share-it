@@ -41,7 +41,7 @@ export const uploadFile = async (file: File, userId: string) => {
 export const getAllFiles = async (userId: string) => {
   const { data, error } = await supabase
     .from("files")
-    .select("*")
+    // .select("*")
     .eq("uploaded_by", userId);
   if (error) {
     throw new Error("Cabins could not be loaded");
