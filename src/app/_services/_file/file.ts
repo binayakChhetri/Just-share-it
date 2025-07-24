@@ -30,7 +30,7 @@ export const uploadFile = async (file: File, userId: string) => {
 
   // Delete the file from Supabase storage if there was an error
   if (storageError) {
-    // await supabase.from("files").delete().eq("id", data.id);
+    await supabase.from("files").delete().eq("id", data.id);
     throw new Error("File upload failed ");
   }
 
