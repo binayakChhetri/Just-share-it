@@ -47,7 +47,7 @@ export const getAllFiles = async (userId: string) => {
     throw new Error("Cabins could not be loaded");
   }
 
-  return data;
+  // return data;
 };
 
 // Get latest file uploaded by the specific user
