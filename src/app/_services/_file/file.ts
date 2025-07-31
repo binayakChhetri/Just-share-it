@@ -55,7 +55,7 @@ export const getLatestFile = async (userId: string) => {
   const { data, error } = await supabase
     .from("files")
     .select("*")
-    // .eq("uploaded_by", userId)
+    .eq("uploaded_by", userId)
     .order("created_at", { ascending: false })
     .limit(1);
   if (error) {
