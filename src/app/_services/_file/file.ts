@@ -51,7 +51,7 @@ export const getAllFiles = async (userId: string) => {
 };
 
 // Get latest file uploaded by the specific user
-// export const getLatestFile = async (userId: string) => {
+export const getLatestFile = async (userId: string) => {
   const { data, error } = await supabase
     .from("files")
     .select("*")
