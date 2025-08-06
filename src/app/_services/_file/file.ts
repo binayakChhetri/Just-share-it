@@ -56,7 +56,7 @@ export const getLatestFile = async (userId: string) => {
     .from("files")
     .select("*")
     .eq("uploaded_by", userId)
-    .order("created_at", { ascending: false })
+    // .order("created_at", { ascending: false })
     .limit(1);
   if (error) {
     throw new Error("Cabins could not be loaded");
