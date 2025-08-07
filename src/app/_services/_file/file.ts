@@ -59,7 +59,7 @@ export const getLatestFile = async (userId: string) => {
     .order("created_at", { ascending: false })
     .limit(1);
   if (error) {
-    // throw new Error("Cabins could not be loaded");
+    throw new Error("Cabins could not be loaded");
   }
   return data;
 };
