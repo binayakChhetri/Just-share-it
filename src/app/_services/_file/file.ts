@@ -66,7 +66,7 @@ export const getLatestFile = async (userId: string) => {
 
 // Delete file from Supabase storage and database
 export const deleteFile = async (id: number) => {
-  // Delete from the table
+  Delete from the table
   const { data, error } = await supabase
 
     .from("files")
