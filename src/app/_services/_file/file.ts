@@ -87,7 +87,7 @@ export const deleteFile = async (id: number) => {
 };
 
 // Get file by id
-// export const getFileById = async (id: number | string) => {
+export const getFileById = async (id: number | string) => {
   const { data, error } = await supabase
     .from("files")
     .select("*")
