@@ -74,7 +74,7 @@ export const deleteFile = async (id: number) => {
     .eq("id", id)
     .select("*");
 
-  // Delete from storage /
+  // Delete from storage
   const fileName = data?.[0].path.split("/").pop();
   const { data: bucketData, error: bucketError } = await supabase.storage
     .from("files")
