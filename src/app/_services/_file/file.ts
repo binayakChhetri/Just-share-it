@@ -82,7 +82,7 @@ export const deleteFile = async (id: number) => {
 
   if (error || bucketError) {
     throw new Error("File could not be deleted");
-  // }
+  }
   return { data, bucketData };
 };
 
