@@ -94,7 +94,7 @@ export const getFileById = async (id: number | string) => {
     .eq("id", id)
     .single();
   if (error) {
-    // throw new Error("File could not be loaded");
+    throw new Error("File could not be loaded");
   }
   return data;
 };
