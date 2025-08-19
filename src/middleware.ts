@@ -1,5 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-const isProtectedRoute = createRouteMatcher(
+const isProtectedRoute = createRouteMatcher([
   "/files",
   "/upload",
   "/file-preview",
